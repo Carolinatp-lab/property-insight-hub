@@ -16,6 +16,12 @@ Kontroller:
 
 Projektets `vite preview` söker efter `dist/server/server.js`, medan Nitro-bygget skriver till `.output`. Webbläsarkontrollen gjordes därför mot utvecklingsservern efter separat godkänt produktionsbygge.
 
+## Samlad beståndsöversikt
+
+När Alla fastigheter är valt börjar Översikt med en gemensam bild av alla tre fastigheter på samma markyta. Därefter följer beståndets summerade nyckeltal, samlad ekonomi, uthyrningsläge och prioriteringar. Fastigheterna jämförs i en gemensam tabell med totalrad, i stället för separata fastighetskort på översikten. Adresserna i tabellen öppnar detaljvyn, som har en knapp för att återgå till hela beståndet. Fastighetskorten finns kvar på sidan Fastigheter.
+
+Webbläsarkontrollen verifierar dessutom alla tre adresser i samma bild, gemensam totalrad, 48 av 50 uthyrda hyresobjekt, 2 av 3 fastigheter som behöver uppföljning samt växling mellan bestånd och detaljvy.
+
 ## Skärmbilder
 
 ![Översikt](screenshots/oversikt.png)
