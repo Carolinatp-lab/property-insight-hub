@@ -43,7 +43,13 @@ export const overviewMaintenanceKpis: {
 
 export const maintenanceKpiDetails: Record<
   string,
-  { title: string; value: string; rows: { label: string; value: string }[]; explanation: string; analysis: string }
+  {
+    title: string;
+    value: string;
+    rows: { label: string; value: string }[];
+    explanation: string;
+    analysis: string;
+  }
 > = {
   plan3: {
     title: "Nästa 3 år",
@@ -95,7 +101,7 @@ export const maintenanceKpiDetails: Record<
     explanation:
       "Åtgärder där verkliga händelser avviker så tydligt från planen att tidpunkten bör prövas om.",
     analysis:
-      "Reparationskostnaden motsvarar en betydande del av bedömd kostnad för byte. Styrelsen behöver ta ställning.",
+      "Reparationskostnaden motsvarar en betydande del av bedömd kostnad för byte. Förvaltningen behöver ta ställning.",
   },
 };
 
@@ -125,7 +131,6 @@ export const maintenanceKpis: {
   },
 ];
 
-
 export const upcoming: {
   year: string;
   statusLabel: string;
@@ -134,7 +139,6 @@ export const upcoming: {
   cost: string;
   mock?: boolean;
   componentId?: string;
-
 }[] = [
   {
     year: "2026",
@@ -189,7 +193,6 @@ export const planChanges: {
   canPropose?: boolean;
   componentId?: string;
   analysisPath?: "/fastigheten" | "/styrelsemote" | "/ekonomi";
-
 }[] = [
   {
     id: "tm2",
@@ -203,7 +206,7 @@ export const planChanges: {
     ],
     assessment: "Återkommande reparationer gör att tidpunkten för byte bör omprövas.",
     details:
-      "Reparationerna återkommer med korta intervall och är koncentrerade till samma maskin. Reparationskostnaden motsvarar redan cirka 70 procent av bedömd kostnad för byte. Systemet föreslår att bytet prövas tidigare än 2028, men ändringen kräver ett styrelsebeslut.",
+      "Reparationerna återkommer med korta intervall och är koncentrerade till samma maskin. Reparationskostnaden motsvarar redan cirka 70 procent av bedömd kostnad för byte. Systemet föreslår att bytet prövas tidigare än 2028, men ändringen kräver ett förvaltningsbeslut.",
     canPropose: true,
     componentId: "tm2",
   },
@@ -216,12 +219,12 @@ export const planChanges: {
       { label: "Plan", value: "Besiktning 2027" },
       {
         label: "Ny information",
-        value: "Styrelsen har beslutat att ta in offerter redan 2026.",
+        value: "Förvaltningen har beslutat att ta in offerter redan 2026.",
       },
     ],
     assessment: "Besiktningen har aktualiserats tidigare än planerat.",
     details:
-      "Besiktningen genomförs i förtid utifrån styrelsens beslut. När resultatet finns kan planerad fasadrenovering 2030 behöva tidsättas om.",
+      "Besiktningen genomförs i förtid utifrån förvaltningens beslut. När resultatet finns kan planerad fasadrenovering 2030 behöva tidsättas om.",
     analysisPath: "/styrelsemote",
   },
   {
@@ -242,15 +245,14 @@ export const planChanges: {
       "Avvikelsen kan bero på drift, inställningar, väder eller verklig effektivitetsförsämring. Ytterligare driftdata behövs innan planen justeras.",
     analysisPath: "/fastigheten",
   },
-
 ];
 
 export const planChangePrinciple =
-  "Systemet ändrar aldrig underhållsplanen automatiskt. AI upptäcker förändringar, analyserar och föreslår justeringar – beslutet fattas av styrelsen.";
+  "Systemet ändrar aldrig underhållsplanen automatiskt. AI upptäcker förändringar, analyserar och föreslår justeringar – beslutet fattas av förvaltningen.";
 
 export const financing = {
   heading: "Underhåll & finansiering",
-  note: "Planerade underhållskostnader per år jämfört med föreningens uppskattade handlingsutrymme.",
+  note: "Planerade underhållskostnader per år jämfört med fastighetsägarens uppskattade handlingsutrymme.",
   capacity: "Uppskattat handlingsutrymme: cirka 1,1 Mkr per år",
   years: [
     { year: "2026", display: "0,4 Mkr", value: 0.4, status: "good" as Status },
@@ -266,12 +268,11 @@ export const financing = {
     },
     { year: "2031", display: "1,0 Mkr", value: 1.0, status: "good" as Status },
   ],
-  observation:
-    "Planerade underhållskostnader är betydligt högre 2030 än omkringliggande år.",
+  observation: "Planerade underhållskostnader är betydligt högre 2030 än omkringliggande år.",
   comment: "Finansieringen bör analyseras i god tid.",
   action: "Visa finansieringsanalys",
   analysis:
-    "Underhållsbehovet 2030 överstiger föreningens uppskattade årliga handlingsutrymme. Finansiering kan behöva ske genom sparande under åren före, upplåning, eller genom att åtgärder fasas över flera år. Analysen är förenklad och utgör inte en finansieringsmodell.",
+    "Underhållsbehovet 2030 överstiger fastighetsägarens uppskattade årliga handlingsutrymme. Finansiering kan behöva ske genom sparande under åren före, upplåning, eller genom att åtgärder fasas över flera år. Analysen är förenklad och utgör inte en finansieringsmodell.",
 };
 
 export type AreaMaintenance = {
@@ -332,7 +333,8 @@ export const areaMaintenance: Record<string, AreaMaintenance> = {
       { year: "2030", action: "Planerad renovering", cost: "3,2 Mkr", planned: true },
     ],
     plan: "Besiktning 2027 och renovering 2030.",
-    today: "Besiktningen aktualiserades 2026 genom styrelsebeslut och genomförs tidigare än planerat.",
+    today:
+      "Besiktningen aktualiserades 2026 genom förvaltningsbeslut och genomförs tidigare än planerat.",
     conclusion: "Planerad renovering 2030 kan behöva tidsättas om när besiktningen är klar.",
   },
   fonster: {
@@ -394,7 +396,7 @@ export const areaMaintenance: Record<string, AreaMaintenance> = {
       { year: "2027", action: "Planerad stamspolning", cost: "180 000 kr", planned: true },
     ],
     plan: "Stamspolning var femte år.",
-    today: "Vattenförbrukningen följs upp under sommaren enligt styrelsebeslut.",
+    today: "Vattenförbrukningen följs upp under sommaren enligt förvaltningsbeslut.",
     conclusion: "Aktuell information stödjer befintlig plan.",
     mock: true,
   },
@@ -666,8 +668,7 @@ export const maintenanceAnswer = {
 // Nivå 1: huvudvy (10 sekunder → 1 minut). Samma data, enklare hierarki.
 // ---------------------------------------------------------------------------
 
-export const planChangesIntro =
-  "Ny information från fastigheten som kan påverka underhållsplanen.";
+export const planChangesIntro = "Ny information från fastigheten som kan påverka underhållsplanen.";
 
 /** Enkel 10-årsbild av underhållsbehovet. Beskriver behov, inte finansiering. */
 export const maintenanceOutlook = {
@@ -696,7 +697,7 @@ export const boardNextSteps: {
     componentId: "tm2",
     actions: [
       { label: "Visa beslutsunderlag" },
-      { label: "Lägg till på styrelsemöte", path: "/styrelsemote" },
+      { label: "Lägg till på förvaltningsmöte", path: "/styrelsemote" },
     ],
   },
   {
@@ -776,8 +777,8 @@ export const componentDetails: Record<string, ComponentDetail> = {
       },
       {
         id: "styrelsemote",
-        label: "Lägg till på styrelsemöte",
-        result: "Punkten är förberedd till nästa styrelsemöte i prototypen.",
+        label: "Lägg till på förvaltningsmöte",
+        result: "Punkten är förberedd till nästa förvaltningsmöte i prototypen.",
       },
       {
         id: "behall",

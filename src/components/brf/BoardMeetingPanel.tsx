@@ -20,10 +20,10 @@ export function BoardMeetingPanel({
       className="rounded-3xl border border-border bg-card p-5 shadow-card sm:p-7"
     >
       <h2 id="board-heading" className="text-lg font-semibold text-foreground">
-        Inför nästa styrelsemöte
+        Inför nästa förvaltningsmöte
       </h2>
       <p className="mt-0.5 text-sm text-muted-foreground">
-        Frågor som kan behöva styrelsens uppmärksamhet.
+        Frågor som kan behöva förvaltningens uppmärksamhet.
       </p>
 
       <div className="mt-4 grid grid-cols-1 gap-3 lg:grid-cols-3">

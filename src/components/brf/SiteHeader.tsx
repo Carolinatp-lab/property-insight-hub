@@ -1,6 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { association, navigation } from "@/data/overview";
+import { useProperties } from "@/components/PropertyProvider";
+import { properties } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -15,80 +17,110 @@ const objectNavigation = [
 ];
 
 export function SiteHeader() {
+  const { selectedId, selectProperty } = useProperties();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
-    <header className="border-b border-border bg-surface/80 backdrop-blur-sm">
-      <div className="mx-auto w-full max-w-6xl px-5 pt-8 sm:px-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-semibold text-foreground sm:text-[1.75rem]">
-              {association.name}
-            </h1>
-            <p className="mt-1 text-sm text-muted-foreground">{association.subtitle}</p>
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:rounded-xl focus:bg-card focus:p-3"
+      >
+        Hoppa till innehållet
+      </a>
+      <header className="border-b border-border bg-surface/80 backdrop-blur-sm">
+        <div className="mx-auto w-full max-w-6xl px-5 pt-8 sm:px-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h1 className="text-2xl font-semibold text-foreground sm:text-[1.75rem]">
+                {association.name}
+              </h1>
+              <p className="mt-1 text-sm text-muted-foreground">{association.subtitle}</p>
+            </div>
+            <p className="text-xs text-muted-foreground sm:text-sm">{association.updated}</p>
           </div>
-          <p className="text-xs text-muted-foreground sm:text-sm">{association.updated}</p>
-        </div>
 
-        <nav className="mt-6 -mb-px flex flex-wrap gap-x-6 gap-y-2">
-          {navigation.map((item) => {
-            const isObjectNavigation = item.id === "objekt";
-            const isActive = isObjectNavigation
-              ? objectNavigation.some((subItem) => subItem.path === pathname)
-              : item.path
-                ? pathname === item.path
-                : false;
-            const className = cn(
-              "shrink-0 border-b-2 pb-3 text-sm transition-colors",
-              isActive
-                ? "border-primary font-semibold text-foreground"
-                : "border-transparent text-muted-foreground hover:text-foreground",
-            );
-
-            if (isObjectNavigation) {
-              return (
-                <DropdownMenu key={item.id}>
-                  <DropdownMenuTrigger
-                    className={cn(className, "flex items-center gap-1 outline-none")}
-                    aria-label="Öppna menyn Lägenheter och lokaler"
-                  >
-                    {item.label}
-                    <ChevronDown className="size-4" aria-hidden="true" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="min-w-52 rounded-xl p-2">
-                    {objectNavigation.map((subItem) => (
-                      <DropdownMenuItem key={subItem.path} asChild className="rounded-lg p-0">
-                        <Link
-                          to={subItem.path}
-                          className="w-full px-3 py-2.5"
-                          aria-current={pathname === subItem.path ? "page" : undefined}
-                        >
-                          {subItem.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+          <div className="mt-5 max-w-sm">
+            <label htmlFor="property-select" className="mb-2 block text-sm font-medium">
+              Fastighetsval
+            </label>
+            <select
+              id="property-select"
+              value={selectedId}
+              onChange={(event) => selectProperty(event.target.value)}
+              className="h-11 w-full rounded-xl border border-input bg-card px-3 text-sm focus-visible:outline-2 focus-visible:outline-ring"
+            >
+              <option value="all">Alla fastigheter</option>
+              {properties.map((property) => (
+                <option key={property.id} value={property.id}>
+                  {property.address}
+                </option>
+              ))}
+            </select>
+          </div>
+          <nav aria-label="Huvudnavigation" className="mt-6 -mb-px flex flex-wrap gap-x-6 gap-y-2">
+            {navigation.map((item) => {
+              const isObjectNavigation = item.id === "objekt";
+              const isActive = isObjectNavigation
+                ? objectNavigation.some((subItem) => subItem.path === pathname)
+                : item.path
+                  ? pathname === item.path
+                  : false;
+              const className = cn(
+                "shrink-0 border-b-2 pb-3 text-sm transition-colors",
+                isActive
+                  ? "border-primary font-semibold text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground",
               );
-            }
 
-            return item.path ? (
-              <Link
-                key={item.id}
-                to={item.path}
-                aria-current={isActive ? "page" : undefined}
-                className={className}
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <button key={item.id} type="button" className={className}>
-                {item.label}
-              </button>
-            );
-          })}
-        </nav>
-      </div>
-    </header>
+              if (isObjectNavigation) {
+                return (
+                  <DropdownMenu key={item.id}>
+                    <DropdownMenuTrigger
+                      className={cn(
+                        className,
+                        "flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-ring",
+                      )}
+                      aria-label="Öppna menyn Uthyrning"
+                    >
+                      {item.label}
+                      <ChevronDown className="size-4" aria-hidden="true" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="min-w-52 rounded-xl p-2">
+                      {objectNavigation.map((subItem) => (
+                        <DropdownMenuItem key={subItem.path} asChild className="rounded-lg p-0">
+                          <Link
+                            to={subItem.path}
+                            className="w-full px-3 py-2.5"
+                            aria-current={pathname === subItem.path ? "page" : undefined}
+                          >
+                            {subItem.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
+
+              return item.path ? (
+                <Link
+                  key={item.id}
+                  to={item.path}
+                  aria-current={isActive ? "page" : undefined}
+                  className={className}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button key={item.id} type="button" className={className}>
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }

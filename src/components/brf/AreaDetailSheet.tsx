@@ -71,7 +71,7 @@ export function AreaDetailSheet({
                 <p className="text-xs text-muted-foreground">Nästa steg</p>
                 <Button className="w-full">{area.nextStep}</Button>
                 <Button variant="outline" className="w-full">
-                  Ta upp på nästa styrelsemöte
+                  Ta upp på nästa förvaltningsmöte
                 </Button>
               </div>
             </div>

@@ -1,7 +1,7 @@
 /**
  * Beräkningar för investeringsscenarier.
  *
- * Lagret känner bara till normaliserade föreningsvärden och användarens
+ * Lagret känner bara till normaliserade fastighetsvärden och användarens
  * antaganden. UI och källsystemformat hålls utanför beräkningarna.
  */
 

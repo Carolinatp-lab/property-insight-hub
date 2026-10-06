@@ -137,9 +137,7 @@ export function PropertySection({
 
       <div className="mt-4 border-t border-border pt-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h3 className="text-sm font-semibold text-foreground">
-            Kostnader senaste 12 månaderna
-          </h3>
+          <h3 className="text-sm font-semibold text-foreground">Kostnader senaste 12 månaderna</h3>
           <div className="flex items-center rounded-full border border-border bg-background p-0.5">
             {periods.map((p) => (
               <button

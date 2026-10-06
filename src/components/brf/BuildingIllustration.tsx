@@ -76,7 +76,7 @@ export function BuildingIllustration({
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
       className={cn("h-auto w-full", className)}
       role="img"
-      aria-label="Genomskärning av föreningens flerbostadshus med fastighetens olika delar"
+      aria-label="Genomskärning av fastighetsägarens flerbostadshus med fastighetens olika delar"
     >
       <defs>
         <linearGradient id="bi-facade" x1="0" y1="0" x2="0" y2="1">
