@@ -11,7 +11,6 @@ import {
 
 const objectNavigation = [
   { label: "Hyresrätter & lokaler", path: "/hyresobjekt" as const },
-  { label: "Bostadsrätter", path: "/bostadsratter" as const },
   { label: "Garage", path: "/garage" as const },
 ];
 

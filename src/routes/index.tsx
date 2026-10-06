@@ -6,7 +6,7 @@ import { KpiSection } from "@/components/brf/KpiSection";
 import { PropertyOverview } from "@/components/brf/PropertyOverview";
 import { AskPanel } from "@/components/brf/AskPanel";
 
-const title = "Översikt – BRF Exempel";
+const title = "Översikt – Fastighetsägare Exempel";
 const description =
   "Överblick över bostadsrättsföreningens ekonomi och fastighet: nyckeltal, status per byggnadsdel och frågor inför nästa styrelsemöte.";
 
