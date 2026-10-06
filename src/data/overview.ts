@@ -58,8 +58,8 @@ export type BoardItem = {
 };
 
 export const association = {
-  name: "BRF Exempel",
-  subtitle: "Översikt över föreningens ekonomi och fastighet",
+  name: "Fastighetsägare Exempel",
+  subtitle: "Översikt över fastighetsbeståndets ekonomi och drift",
   updated: "Senast uppdaterad: idag",
 };
 
@@ -72,10 +72,10 @@ export const navigation: {
   { id: "oversikt", label: "Översikt", active: true, path: "/" },
   { id: "ekonomi", label: "Ekonomi", active: false, path: "/ekonomi" },
 
-  { id: "fastigheten", label: "Fastigheten", active: false, path: "/fastigheten" },
+  { id: "fastigheten", label: "Fastigheter", active: false, path: "/fastigheten" },
   { id: "underhall", label: "Underhåll", active: false, path: "/underhall" },
-  { id: "objekt", label: "Lägenheter & lokaler", active: false },
-  { id: "styrelsemote", label: "Styrelsemöte", active: false, path: "/styrelsemote" },
+  { id: "objekt", label: "Uthyrning", active: false },
+  { id: "styrelsemote", label: "Uppföljning", active: false, path: "/styrelsemote" },
 ];
 
 export const kpis: Kpi[] = [
