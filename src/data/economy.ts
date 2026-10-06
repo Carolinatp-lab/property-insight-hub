@@ -5,7 +5,7 @@ export const mockNote = "Exempeldata i prototypen.";
 
 export const economyIntro = {
   heading: "Ekonomi",
-  subtitle: "Föreningens ekonomiska läge, utveckling och prognos.",
+  subtitle: "Fastighetsägarens ekonomiska läge, utveckling och prognos.",
 };
 
 export type EconomyKpi = {
@@ -46,8 +46,8 @@ export const economyKpis: EconomyKpi[] = [
     status: "neutral",
   },
   {
-    id: "arsavgift",
-    label: "Årsavgift",
+    id: "hyresintakt",
+    label: "Hyresintäkt",
     value: "777 kr/m²",
     comparison: "från 772 kr/m²",
     direction: "up",
@@ -105,7 +105,7 @@ export const economyChanges: EconomyChange[] = [
       { label: "Jämförelse", value: "304 kr/m² år 2023" },
     ],
     explanation:
-      "Sparandet har minskat från 134 kr/m² till 122 kr/m², och är betydligt lägre än 304 kr/m² år 2023. Nedgången påverkar föreningens möjlighet att finansiera kommande underhåll.",
+      "Sparandet har minskat från 134 kr/m² till 122 kr/m², och är betydligt lägre än 304 kr/m² år 2023. Nedgången påverkar fastighetsägarens möjlighet att finansiera kommande underhåll.",
     details:
       "Sparandet har minskat successivt sedan 2023, främst genom högre energi- och reparationskostnader. Nivån behöver ställas mot planerat underhåll de kommande fem åren innan slutsats dras.",
   },
@@ -134,13 +134,13 @@ export type BudgetRow = {
 
 export const budgetRows: BudgetRow[] = [
   {
-    id: "arsavgifter",
-    area: "Årsavgifter",
+    id: "hyresintakter",
+    area: "Hyresintäkter",
     budget: "4 240 tkr",
     actual: "4 248 tkr",
     deviation: "+8 tkr",
     status: "neutral",
-    detail: "Avgiftsintäkterna följer budget. Ingen vakans under perioden.",
+    detail: "Hyresintäkterna följer budget. Ingen vakans under perioden.",
   },
   {
     id: "varme",
@@ -168,7 +168,7 @@ export const budgetRows: BudgetRow[] = [
     actual: "188 tkr",
     deviation: "−8 tkr",
     status: "neutral",
-    detail: "Vattenförbrukningen följs upp under sommaren enligt tidigare styrelsebeslut.",
+    detail: "Vattenförbrukningen följs upp under sommaren enligt tidigare förvaltningsbeslut.",
   },
   {
     id: "reparationer",
@@ -199,16 +199,11 @@ export const forecast = {
     { label: "Förväntad avvikelse", value: "+47 tkr" },
   ],
   explanation:
-    "Med nuvarande utveckling väntas föreningen avsluta året nära budget. Högre värmekostnader motverkas delvis av lägre kostnader inom andra områden.",
+    "Med nuvarande utveckling väntas fastighetsägaren avsluta året nära budget. Högre värmekostnader motverkas delvis av lägre kostnader inom andra områden.",
 };
 
 export type EconomyTrendKey =
-  | "sparande"
-  | "belaning"
-  | "arsavgift"
-  | "likvida"
-  | "soliditet"
-  | "energi";
+  "sparande" | "belaning" | "hyresintakt" | "likvida" | "soliditet" | "energi";
 
 export type TrendPoint = { year: string; value: number; display: string };
 
@@ -248,8 +243,8 @@ export const economyTrends: Record<
       { year: "2026", value: 5220, display: "5 220" },
     ],
   },
-  arsavgift: {
-    label: "Årsavgift kr/m²",
+  hyresintakt: {
+    label: "Hyresintäkt kr/m²",
     unit: "kr/m²",
     points: [
       { year: "2017", value: 702, display: "702" },
@@ -334,7 +329,7 @@ export const loans = {
     { year: "2029+", value: 12.0, display: "12,0 Mkr" },
   ],
   sensitivity:
-    "Om föreningens genomsnittliga ränta ökar med 1 procentenhet innebär det cirka 382 000 kr högre årlig räntekostnad.",
+    "Om fastighetsägarens genomsnittliga ränta ökar med 1 procentenhet innebär det cirka 382 000 kr högre årlig räntekostnad.",
 };
 
 export const maintenanceCapacity = {
@@ -421,7 +416,7 @@ export const economyHealth = {
   status: "good" as Status,
   statusLabel: "Stabil ekonomi",
   summary:
-    "Föreningen har god likviditet och belåningen minskar. Sparandet har däremot minskat och bör följas inför kommande underhåll.",
+    "Fastighetsägaren har god likviditet och belåningen minskar. Sparandet har däremot minskat och bör följas inför kommande underhåll.",
 };
 
 export type OverviewKpi = {
@@ -495,7 +490,7 @@ export const kpiDetails: Record<
     ],
     trendKey: "likvida",
     meaning:
-      "Likvida medel är de pengar föreningen har tillgängliga på konto. De används för löpande kostnader och för att kunna betala underhåll utan att låna.",
+      "Likvida medel är de pengar fastighetsägaren har tillgängliga på konto. De används för löpande kostnader och för att kunna betala underhåll utan att låna.",
     changed:
       "Likviditeten har ökat med 1,3 Mkr sedan föregående år, främst genom lägre underhållskostnader under perioden.",
   },
@@ -508,7 +503,7 @@ export const kpiDetails: Record<
     ],
     trendKey: "belaning",
     meaning:
-      "Belåning visar föreningens lån per kvadratmeter bostadsyta. Måttet gör det möjligt att jämföra skuldsättning mellan föreningar av olika storlek.",
+      "Belåning visar fastighetsägarens lån per kvadratmeter bostadsyta. Måttet gör det möjligt att jämföra skuldsättning mellan fastigheter av olika storlek.",
     changed:
       "Belåningen har minskat varje år sedan 2017. Amorteringstakten har varit stabil och ligger kvar på samma nivå som föregående år.",
   },
@@ -521,7 +516,7 @@ export const kpiDetails: Record<
     ],
     trendKey: "sparande",
     meaning:
-      "Sparande är det som blir kvar av årsavgifterna efter löpande kostnader och räntor, per kvadratmeter. Det är de medel föreningen kan använda till framtida underhåll.",
+      "Sparande är det som blir kvar av hyresintäkterna efter löpande kostnader och räntor, per kvadratmeter. Det är de medel fastighetsägaren kan använda till framtida underhåll.",
     changed:
       "Sparandet har minskat successivt sedan 2023, främst genom högre energi- och reparationskostnader. Nivån bör bedömas mot planerat underhåll de kommande fem åren.",
   },
@@ -534,7 +529,7 @@ export const kpiDetails: Record<
       { label: "Budget helår", value: "−145 tkr" },
     ],
     meaning:
-      "Utfall mot budget visar om föreningens kostnader och intäkter följer det styrelsen beslutade inför året.",
+      "Utfall mot budget visar om fastighetsägarens kostnader och intäkter följer det förvaltningen beslutade inför året.",
     changed:
       "Utfallet ligger 120 tkr bättre än budget. Värme och reparationer avviker negativt, medan administration och vatten avviker positivt.",
   },
@@ -543,16 +538,36 @@ export const kpiDetails: Record<
 export const outlook = {
   heading: "Framåt",
   years: [
-    { year: "2027", status: "good" as Status, statusLabel: "Bra", note: "Normalt planerat underhåll" },
+    {
+      year: "2027",
+      status: "good" as Status,
+      statusLabel: "Bra",
+      note: "Normalt planerat underhåll",
+    },
     {
       year: "2028",
       status: "good" as Status,
       statusLabel: "Bra",
       note: "Större underhåll planerat",
     },
-    { year: "2029", status: "good" as Status, statusLabel: "Bra", note: "Normalt planerat underhåll" },
-    { year: "2030", status: "watch" as Status, statusLabel: "Bevaka", note: "Större underhåll väntar" },
-    { year: "2031", status: "good" as Status, statusLabel: "Bra", note: "Normalt planerat underhåll" },
+    {
+      year: "2029",
+      status: "good" as Status,
+      statusLabel: "Bra",
+      note: "Normalt planerat underhåll",
+    },
+    {
+      year: "2030",
+      status: "watch" as Status,
+      statusLabel: "Bevaka",
+      note: "Större underhåll väntar",
+    },
+    {
+      year: "2031",
+      status: "good" as Status,
+      statusLabel: "Bra",
+      note: "Normalt planerat underhåll",
+    },
   ],
   summary:
     "Planerade underhållskostnader ökar tydligt 2030. Finansieringen bör analyseras i god tid.",
@@ -594,28 +609,28 @@ export const overviewQuestions = [
 ];
 
 // ---------------------------------------------------------------------------
-// Avgiftsbedömning. Systemet beskriver konsekvenser – styrelsen fattar beslutet.
+// Intäktsbedömning. Systemet beskriver konsekvenser – förvaltningen fattar beslutet.
 // ---------------------------------------------------------------------------
 
 export const feeAssessment = {
-  heading: "Avgiftsbedömning",
-  currentLabel: "Nuvarande årsavgift",
+  heading: "Intäktsbedömning",
+  currentLabel: "Nuvarande hyresintäkt",
   current: "777 kr/m²",
   status: "good" as Status,
-  statusLabel: "Nuvarande avgift bedöms vara tillräcklig året ut",
+  statusLabel: "Nuvarande hyresintäkt bedöms vara tillräcklig året ut",
   explanation:
     "Med nuvarande prognos väntas ekonomin ligga nära budget och likviditeten är fortsatt god.",
   forwardStatus: "watch" as Status,
   forwardLabel: "Bevaka inför nästa budget",
   forwardNote: "Sparandet har minskat och större underhåll väntar längre fram.",
-  action: "Visa avgiftsanalys",
+  action: "Visa intäktsanalys",
 };
 
-/** Prognos med oförändrad avgift. Mockdata i prototypen. */
+/** Prognos med oförändrad hyresintäkt. Mockdata i prototypen. */
 export const feeForecast = {
-  heading: "Prognos med oförändrad avgift",
+  heading: "Prognos med oförändrad hyresintäkt",
   rows: [
-    { label: "Avgiftsintäkter", value: "4 248 tkr/år" },
+    { label: "Hyresintäkter", value: "4 248 tkr/år" },
     { label: "Driftkostnader", value: "3 010 tkr/år" },
     { label: "Räntekostnader", value: "1 085 tkr/år" },
     { label: "Sparande", value: "122 kr/m²" },
@@ -628,7 +643,7 @@ export const feeReasoning: { label: string; lines: string[] }[] = [
   {
     label: "Fakta",
     lines: [
-      "Årsavgiften är 777 kr/m², en ökning från 772 kr/m² föregående år.",
+      "Hyresintäkten är 777 kr/m², en ökning från 772 kr/m² föregående år.",
       "Utfallet ligger 120 tkr bättre än budget hittills i år och likvida medel är 4,5 Mkr.",
       "Sparandet är 122 kr/m² mot 304 kr/m² år 2023.",
     ],
@@ -652,7 +667,7 @@ export const feeReasoning: { label: string; lines: string[] }[] = [
     label: "Bedömning",
     lines: [
       "Nuvarande prognos indikerar ett framtida finansieringsgap kring 2030 om sparandet ligger kvar på dagens nivå.",
-      "Avgiftsnivån bör analyseras inför nästa budget. Underlaget räcker inte för att slå fast en viss avgiftsnivå.",
+      "Hyresnivån bör analyseras inför nästa budget. Underlaget räcker inte för att slå fast en viss hyresnivå.",
     ],
   },
 ];
@@ -760,4 +775,4 @@ export const feeComparisons: {
 ];
 
 export const feePrinciple =
-  "Prototypen visar konsekvenser av olika avgiftsnivåer. Den tar inte ställning till vilken nivå som är rätt – det beslutet fattas av styrelsen.";
+  "Prototypen visar konsekvenser av olika hyresnivåer. Den tar inte ställning till vilken nivå som är rätt – det beslutet fattas av förvaltningen.";

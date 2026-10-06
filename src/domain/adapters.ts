@@ -28,7 +28,7 @@ export type EconomySourceAdapter = {
   normalize: (records: SourceRecord[]) => NormalizedDataset;
 };
 
-/** Regelbaserad kontomappning – ersätts senare av konfigurerbar mappning per förening. */
+/** Regelbaserad kontomappning – ersätts senare av konfigurerbar mappning per fastighetsägare. */
 const accountCategory: Record<string, { category: CostCategory; eventType: EventType }> = {
   "5170": { category: "reparation", eventType: "felavhjalpande-underhall" },
   "5020": { category: "el", eventType: "forbrukning" },
@@ -46,14 +46,14 @@ function classifyProperty(text: string): { property: PropertyRef; confidence: nu
   const t = text.toLowerCase();
   if (t.includes("tvättstuga")) {
     return {
-      property: { propertyId: "brf-1", areaId: "tvattstuga", componentId: "tm2" },
+      property: { propertyId: "storgatan-12", areaId: "tvattstuga", componentId: "tm2" },
       confidence: 0.8,
     };
   }
   if (t.includes("värme") || t.includes("ventilation")) {
-    return { property: { propertyId: "brf-1", areaId: "varme" }, confidence: 0.7 };
+    return { property: { propertyId: "storgatan-12", areaId: "varme" }, confidence: 0.7 };
   }
-  return { property: { propertyId: "brf-1" }, confidence: 0.3 };
+  return { property: { propertyId: "storgatan-12" }, confidence: 0.3 };
 }
 
 /** Mock-adapter som visar hur originaldata behålls samtidigt som den klassificeras. */

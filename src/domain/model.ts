@@ -14,15 +14,7 @@
 
 /** Källsystem som data kan komma ifrån. Listan kan utökas utan att UI påverkas. */
 export type SourceSystem =
-  | "fortnox"
-  | "oqto"
-  | "visma"
-  | "bjorn-lunden"
-  | "sie"
-  | "csv"
-  | "invoice"
-  | "manual"
-  | "mock";
+  "fortnox" | "oqto" | "visma" | "bjorn-lunden" | "sie" | "csv" | "invoice" | "manual" | "mock";
 
 /** Hur data kom in i plattformen. */
 export type IngestMethod = "api" | "sie" | "file" | "invoice" | "manual";
@@ -61,7 +53,7 @@ export type CostCategory =
   | "administration"
   | "ranta"
   | "amortering"
-  | "avgiftsintakt"
+  | "hyresintakt"
   | "ovrigt";
 
 /** Vad händelsen representerar i fastighetens liv. */

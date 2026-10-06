@@ -106,14 +106,14 @@ export const renovationHistory = [
     unit: "Lokal 01",
     title: "Service av ventilation",
     cost: "38 000 kr",
-    responsibility: "Föreningen",
+    responsibility: "Fastighetsägaren",
   },
   {
     year: "2023",
     unit: "Lägenhet 1302",
     title: "Byte av vitvaror",
     cost: "24 000 kr",
-    responsibility: "Föreningen",
+    responsibility: "Fastighetsägaren",
   },
   {
     year: "2022",
@@ -147,4 +147,4 @@ export const tenancyAttention = [
 ];
 
 export const tenancyMockNote =
-  "Uppgifterna är exempeldata och ersätts senare med föreningens avtal, bokföring och underhållshistorik.";
+  "Uppgifterna är exempeldata och ersätts senare med fastighetsägarens avtal, bokföring och underhållshistorik.";

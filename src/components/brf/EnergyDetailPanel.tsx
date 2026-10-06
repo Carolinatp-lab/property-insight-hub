@@ -28,7 +28,9 @@ const mockNote = "Exempeldata i prototypen.";
 
 function Card({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("rounded-3xl border border-border bg-card p-5 shadow-card sm:p-6", className)}>
+    <div
+      className={cn("rounded-3xl border border-border bg-card p-5 shadow-card sm:p-6", className)}
+    >
       {children}
     </div>
   );
@@ -285,13 +287,7 @@ function AskEnergy() {
   );
 }
 
-function DeepDiveSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function DeepDiveSection({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -359,7 +355,10 @@ export function EnergyDetailPanel({ area }: { area: PropertyArea }) {
 
       {/* 2. Vad har förändrats – och varför? */}
       <Card>
-        <SectionHeading title="Varför har kostnaden förändrats?" note="Jämfört med föregående period." />
+        <SectionHeading
+          title="Varför har kostnaden förändrats?"
+          note="Jämfört med föregående period."
+        />
         <dl className="mt-4 grid grid-cols-2 gap-2 lg:grid-cols-4">
           {changeDrivers.map((driver) => (
             <div key={driver.label} className="rounded-2xl border border-border bg-surface/60 p-4">
@@ -383,17 +382,14 @@ export function EnergyDetailPanel({ area }: { area: PropertyArea }) {
       <Card>
         <h4 className="flex items-center gap-2 text-sm font-semibold text-foreground">
           <Sparkles aria-hidden className="size-3.5 text-muted-foreground" />
-          Det här bör styrelsen känna till
+          Det här bör förvaltningen känna till
         </h4>
         <ul className="mt-4 space-y-2">
           {energyInsights.slice(0, 3).map((insight) => {
             const isExpandable = insight.id === "e3";
             const isOpen = expandedInsight === insight.id;
             return (
-              <li
-                key={insight.id}
-                className="rounded-2xl border border-border bg-surface/60 p-4"
-              >
+              <li key={insight.id} className="rounded-2xl border border-border bg-surface/60 p-4">
                 {isExpandable ? (
                   <button
                     type="button"
@@ -460,7 +456,7 @@ export function EnergyDetailPanel({ area }: { area: PropertyArea }) {
 
         <div className="mt-4 border-t border-border pt-4">
           <p className="text-xs text-muted-foreground">
-            Beslutsstöd för styrelsen – inte ett automatiskt beslut.
+            Beslutsstöd för förvaltningen – inte ett automatiskt beslut.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Button variant="outline" onClick={() => setWatching(true)}>
@@ -469,7 +465,9 @@ export function EnergyDetailPanel({ area }: { area: PropertyArea }) {
             <Button variant="outline" onClick={() => setActionCreated(true)}>
               Skapa åtgärd
             </Button>
-            <Button onClick={() => setAddedToBoard(true)}>Lägg till på nästa styrelsemöte</Button>
+            <Button onClick={() => setAddedToBoard(true)}>
+              Lägg till på nästa förvaltningsmöte
+            </Button>
           </div>
 
           {watching ? (
@@ -487,7 +485,7 @@ export function EnergyDetailPanel({ area }: { area: PropertyArea }) {
             <div className="mt-4 rounded-2xl border border-status-good/40 bg-card p-4">
               <p className="flex items-center gap-2 text-sm font-medium text-foreground">
                 <Check aria-hidden className="size-4 text-status-good" />
-                Frågan har lagts till som beslutspunkt inför nästa styrelsemöte.
+                Frågan har lagts till som beslutspunkt inför nästa förvaltningsmöte.
               </p>
               <div className="mt-3 rounded-xl border border-border bg-surface/60 p-4">
                 <p className="text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">

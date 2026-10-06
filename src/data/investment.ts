@@ -2,7 +2,7 @@ import type { InvestmentBaseline, InvestmentScenario } from "@/domain/investment
 
 /**
  * Normaliserade exempelvärden för prototypen. De ersätts senare av analys
- * av föreningens gemensamma interna datamodell.
+ * av fastighetsägarens gemensamma interna datamodell.
  */
 export const investmentBaseline: InvestmentBaseline = {
   liquidAssets: 4_500_000,

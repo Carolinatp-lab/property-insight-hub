@@ -1,10 +1,10 @@
 import type { Status } from "@/data/overview";
 
 export const nextMeeting = {
-  heading: "Inför nästa styrelsemöte",
+  heading: "Inför nästa förvaltningsmöte",
   subtitle:
-    "Sammanfattning av det som förändrats, behöver följas upp eller kräver styrelsens beslut.",
-  label: "Nästa styrelsemöte",
+    "Sammanfattning av det som förändrats, behöver följas upp eller kräver förvaltningens beslut.",
+  label: "Nästa förvaltningsmöte",
   date: "15 september 2026 · 18:00",
 };
 
@@ -76,10 +76,7 @@ export const toWatch: {
   {
     id: "sparande",
     title: "Sparandet har minskat",
-    metrics: [
-      { value: "122 kr/m²" },
-      { label: "jämfört med", value: "304 kr/m² år 2023" },
-    ],
+    metrics: [{ value: "122 kr/m²" }, { label: "jämfört med", value: "304 kr/m² år 2023" }],
     analysis: "Utvecklingen bör följas tillsammans med kommande planerat underhåll.",
     nextStep: "Följ utvecklingen vid nästa ekonomiska uppföljning.",
     action: { label: "Visa analys" },
@@ -101,8 +98,7 @@ export const toWatch: {
 
 export const decision = {
   area: "Tvättstuga – Tvättmaskin 2",
-  background:
-    "Tvättmaskin 2 har reparerats fyra gånger under de senaste 12 månaderna.",
+  background: "Tvättmaskin 2 har reparerats fyra gånger under de senaste 12 månaderna.",
   facts: [
     { label: "Reparationer 12 mån", value: "4" },
     { label: "Reparationskostnad", value: "31 800 kr" },
@@ -113,7 +109,7 @@ export const decision = {
     "Reparationskostnaderna är koncentrerade till samma maskin och återkommer med korta intervall.",
   recommendation:
     "Utred om det är ekonomiskt mer fördelaktigt att tidigarelägga bytet än att fortsätta reparera maskinen.",
-  question: "Ska föreningen ta in offert för tidigarelagt byte?",
+  question: "Ska fastighetsägaren ta in offert för tidigarelagt byte?",
   options: [
     { id: "yes", label: "Ja – ta in offert" },
     { id: "no", label: "Nej" },
@@ -182,7 +178,7 @@ export const economySnapshot: { id: string; label: string; value: string; status
   { id: "belaning", label: "Belåning", value: "5 220 kr/m²", status: "good" },
   { id: "sparande", label: "Sparande", value: "122 kr/m²", status: "watch" },
   { id: "likvida", label: "Likvida medel", value: "4,5 Mkr", status: "good" },
-  { id: "arsavgift", label: "Årsavgift", value: "777 kr/m²", status: "neutral" },
+  { id: "arsavgift", label: "Hyresintäkt", value: "777 kr/m²", status: "neutral" },
 ];
 
 export const proposedAgenda: string[] = [

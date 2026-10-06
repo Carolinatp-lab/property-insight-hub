@@ -43,7 +43,7 @@ export type Insight = {
   fact: string;
   /** Tolkning – aldrig presenterad som orsak. */
   analysis?: string;
-  /** Förslag till styrelsen. */
+  /** Förslag till förvaltningen. */
   recommendation?: string;
   /** Kopplad fastighetsdel, om insikten gäller en specifik del. */
   areaId?: string;
@@ -96,8 +96,8 @@ export const kpis: Kpi[] = [
     status: "watch",
   },
   {
-    id: "arsavgift",
-    label: "Årsavgift",
+    id: "hyresintakt",
+    label: "Hyresintäkt",
     value: "777 kr/m²",
     comparison: "från 772 kr/m²",
     direction: "up",
@@ -313,7 +313,7 @@ export const insights: Insight[] = [
     id: "i1",
     status: "good",
     title: "Belåningen fortsätter nedåt",
-    fact: "Föreningens lån har minskat från cirka 19,3 Mkr år 2020 till cirka 14,9 Mkr år 2025.",
+    fact: "Fastighetsägarens lån har minskat från cirka 19,3 Mkr år 2020 till cirka 14,9 Mkr år 2025.",
     analysis: "Amorteringstakten har varit jämn under perioden.",
   },
   {
@@ -364,7 +364,7 @@ export const boardItems: BoardItem[] = [
 export const exampleQuestions = [
   "Vad driver våra energikostnader?",
   "Vilka större underhållsåtgärder kommer de närmaste tre åren?",
-  "Hur har föreningens ekonomi utvecklats?",
+  "Hur har fastighetsägarens ekonomi utvecklats?",
 ];
 
 export const sampleAnswer =

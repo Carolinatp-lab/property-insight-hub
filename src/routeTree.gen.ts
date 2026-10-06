@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BostadsratterRouteImport } from './routes/bostadsratter'
 import { Route as EkonomiRouteImport } from './routes/ekonomi'
 import { Route as FastighetenRouteImport } from './routes/fastigheten'
 import { Route as GarageRouteImport } from './routes/garage'
@@ -22,11 +21,6 @@ import { Route as EkonomiInvesteringssimulatorRouteImport } from './routes/ekono
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BostadsratterRoute = BostadsratterRouteImport.update({
-  id: '/bostadsratter',
-  path: '/bostadsratter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EkonomiRoute = EkonomiRouteImport.update({
@@ -68,7 +62,6 @@ const EkonomiInvesteringssimulatorRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/bostadsratter': typeof BostadsratterRoute
   '/ekonomi': typeof EkonomiRouteWithChildren
   '/fastigheten': typeof FastighetenRoute
   '/garage': typeof GarageRoute
@@ -79,7 +72,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/bostadsratter': typeof BostadsratterRoute
   '/ekonomi': typeof EkonomiRouteWithChildren
   '/fastigheten': typeof FastighetenRoute
   '/garage': typeof GarageRoute
@@ -91,7 +83,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/bostadsratter': typeof BostadsratterRoute
   '/ekonomi': typeof EkonomiRouteWithChildren
   '/fastigheten': typeof FastighetenRoute
   '/garage': typeof GarageRoute
@@ -104,7 +95,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/bostadsratter'
     | '/ekonomi'
     | '/fastigheten'
     | '/garage'
@@ -115,7 +105,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/bostadsratter'
     | '/ekonomi'
     | '/fastigheten'
     | '/garage'
@@ -126,7 +115,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/bostadsratter'
     | '/ekonomi'
     | '/fastigheten'
     | '/garage'
@@ -138,7 +126,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BostadsratterRoute: typeof BostadsratterRoute
   EkonomiRoute: typeof EkonomiRouteWithChildren
   FastighetenRoute: typeof FastighetenRoute
   GarageRoute: typeof GarageRoute
@@ -154,13 +141,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/bostadsratter': {
-      id: '/bostadsratter'
-      path: '/bostadsratter'
-      fullPath: '/bostadsratter'
-      preLoaderRoute: typeof BostadsratterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ekonomi': {
@@ -228,7 +208,6 @@ const EkonomiRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BostadsratterRoute: BostadsratterRoute,
   EkonomiRoute: EkonomiRouteWithChildren,
   FastighetenRoute: FastighetenRoute,
   GarageRoute: GarageRoute,

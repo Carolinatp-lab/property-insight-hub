@@ -194,7 +194,7 @@ export const areaDetails: Record<string, AreaDetail> = {
   },
 };
 
-/** Mock-beslutspunkt som skapas när en fråga läggs till styrelsemötet. */
+/** Mock-beslutspunkt som skapas när en fråga läggs till förvaltningsmötet. */
 export const boardDraftItem = {
   title: "Tvättstuga – Tvättmaskin 2",
   background: "Fyra reparationer under de senaste 12 månaderna.",
@@ -202,5 +202,5 @@ export const boardDraftItem = {
   plannedReplacement: "2028",
   estimatedCost: "45 000 kr",
   proposal: "Ta in offert för utbyte och jämför med fortsatt reparationskostnad.",
-  question: "Ska föreningen ta in offert för tidigarelagt byte av Tvättmaskin 2?",
+  question: "Ska fastighetsägaren ta in offert för tidigarelagt byte av Tvättmaskin 2?",
 };

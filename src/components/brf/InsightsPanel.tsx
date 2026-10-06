@@ -18,7 +18,7 @@ export function InsightsPanel({
       <div className="flex items-center gap-2">
         <Sparkles aria-hidden className="size-4 text-muted-foreground" />
         <h2 id="insights-heading" className="text-lg font-semibold text-foreground">
-          Det här bör styrelsen känna till
+          Det här bör förvaltningen känna till
         </h2>
       </div>
 
@@ -78,8 +78,8 @@ export function InsightsPanel({
       </ul>
 
       <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-        Observation bygger på föreningens egna siffror. Analys är en tolkning – orsaken anges endast
-        när underlaget visar den.
+        Observation bygger på fastighetsägarens egna siffror. Analys är en tolkning – orsaken anges
+        endast när underlaget visar den.
       </p>
     </section>
   );

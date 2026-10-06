@@ -25,7 +25,7 @@ export function AskPanel() {
       className="rounded-3xl border border-border bg-card p-6 shadow-card sm:p-8"
     >
       <h2 id="ask-heading" className="text-lg font-semibold text-foreground">
-        Fråga om föreningen
+        Fråga om fastighetsägaren
       </h2>
 
       <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3 sm:flex-row">

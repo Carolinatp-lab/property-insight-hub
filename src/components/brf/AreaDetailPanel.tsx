@@ -153,9 +153,7 @@ function ComponentDetail({ component }: { component: PropertyComponent }) {
               <div className="space-y-3">
                 <div>
                   <div className="flex items-baseline justify-between gap-3 text-sm">
-                    <span className="text-muted-foreground">
-                      Reparationer senaste 12 månader
-                    </span>
+                    <span className="text-muted-foreground">Reparationer senaste 12 månader</span>
                     <span className="font-semibold text-foreground">{component.totalCost}</span>
                   </div>
                   <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-muted">
@@ -179,7 +177,7 @@ function ComponentDetail({ component }: { component: PropertyComponent }) {
               </div>
               <p className="mt-3 text-xs text-muted-foreground">
                 Jämförelsen visar kostnaderna sida vid sida – vilken åtgärd som är lämplig är en
-                fråga för styrelsen.
+                fråga för förvaltningen.
               </p>
             </div>
           ) : null}
@@ -193,7 +191,7 @@ function ComponentDetail({ component }: { component: PropertyComponent }) {
             Analys och rekommendation
           </h5>
           <p className="mt-0.5 text-xs text-muted-foreground">
-            Beslutsstöd för styrelsen – inte ett automatiskt beslut.
+            Beslutsstöd för förvaltningen – inte ett automatiskt beslut.
           </p>
           <div className="mt-3 space-y-4">
             <div>
@@ -225,7 +223,7 @@ function ComponentDetail({ component }: { component: PropertyComponent }) {
           <div className="mt-5 flex flex-wrap gap-2">
             <Button>Ta in offert</Button>
             <Button variant="outline" onClick={() => setAddedToBoard(true)}>
-              Lägg till på nästa styrelsemöte
+              Lägg till på nästa förvaltningsmöte
             </Button>
             <Button variant="ghost">Bevaka</Button>
           </div>
@@ -234,7 +232,7 @@ function ComponentDetail({ component }: { component: PropertyComponent }) {
             <div className="mt-4 rounded-2xl border border-status-good/40 bg-card p-4">
               <p className="flex items-center gap-2 text-sm font-medium text-foreground">
                 <Check aria-hidden className="size-4 text-status-good" />
-                {component.name} har lagts till som beslutspunkt inför nästa styrelsemöte.
+                {component.name} har lagts till som beslutspunkt inför nästa förvaltningsmöte.
               </p>
               <div className="mt-3 rounded-xl border border-border bg-surface/60 p-4">
                 <p className="text-sm font-semibold text-foreground">{boardDraftItem.title}</p>
@@ -250,7 +248,9 @@ function ComponentDetail({ component }: { component: PropertyComponent }) {
                     </dd>
                   </div>
                   <div className="flex justify-between gap-3">
-                    <dt className="shrink-0 text-muted-foreground">Planerat byte enligt underhållsplan</dt>
+                    <dt className="shrink-0 text-muted-foreground">
+                      Planerat byte enligt underhållsplan
+                    </dt>
                     <dd className="text-right text-foreground">
                       {boardDraftItem.plannedReplacement}
                     </dd>
@@ -267,7 +267,7 @@ function ComponentDetail({ component }: { component: PropertyComponent }) {
                   </div>
                 </dl>
                 <p className="mt-3 border-t border-border pt-3 text-sm text-foreground">
-                  <span className="font-medium">Fråga till styrelsen: </span>
+                  <span className="font-medium">Fråga till förvaltningen: </span>
                   {boardDraftItem.question}
                 </p>
               </div>
@@ -289,14 +289,12 @@ export function AreaDetailPanel({ area }: { area: PropertyArea }) {
 
   const selected = detail?.components.find((c) => c.id === componentId) ?? null;
 
-  const metrics =
-    detail?.metrics ??
-    [
-      { label: "Kostnad senaste 12 månaderna", value: area.cost12m },
-      { label: "Antal fel/reparationer", value: area.repairs ?? "–" },
-      { label: "Senaste åtgärd", value: area.lastAction },
-      { label: "Planerat underhåll", value: area.plannedAction },
-    ];
+  const metrics = detail?.metrics ?? [
+    { label: "Kostnad senaste 12 månaderna", value: area.cost12m },
+    { label: "Antal fel/reparationer", value: area.repairs ?? "–" },
+    { label: "Senaste åtgärd", value: area.lastAction },
+    { label: "Planerat underhåll", value: area.plannedAction },
+  ];
 
   return (
     <section

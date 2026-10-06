@@ -163,7 +163,7 @@ export const energyInsights: { id: string; status: Status; title: string; text: 
     id: "e1",
     status: "good",
     title: "Inomhustemperaturen är stabil",
-    text: "Genomsnittlig temperatur är 20,6 °C och ligger inom föreningens mål.",
+    text: "Genomsnittlig temperatur är 20,6 °C och ligger inom fastighetsägarens mål.",
   },
   {
     id: "e2",
@@ -189,7 +189,7 @@ export const energyQuestions = [
 ];
 
 export const energyAnswer =
-  "Exempelsvar: Värmekostnaden har ökat med 8 % medan energiförbrukningen är i stort oförändrad (+1 %). Ökningen förklaras främst av högre energipris (+6 %) och högre fast avgift (+12 %). Underlaget bör kompletteras innan styrelsen beslutar om åtgärd.";
+  "Exempelsvar: Värmekostnaden har ökat med 8 % medan energiförbrukningen är i stort oförändrad (+1 %). Ökningen förklaras främst av högre energipris (+6 %) och högre fast avgift (+12 %). Underlaget bör kompletteras innan förvaltningen beslutar om åtgärd.";
 
 export const lifecycle: { label: string; value: string }[] = [
   { label: "Bergvärmepumpar installerade", value: "2016" },
