@@ -1,3 +1,4 @@
+import { RentalUnitRegistry } from "@/components/RentalUnitRegistry";
 import { PortfolioOverview } from "@/components/PortfolioOverview";
 import { Link } from "@tanstack/react-router";
 import { Building2, ArrowRight } from "lucide-react";
@@ -176,7 +177,8 @@ export function PortfolioPage({ view }: { view: View }) {
           </section>
         )}
         {view === "maintenance" && <Maintenance items={items} />}
-        {(view === "tenancies" || view === "garage") && (
+        {view === "tenancies" && <RentalUnitRegistry key={selectedId} />}
+        {view === "garage" && (
           <section className={card}>
             <h2 className="text-lg font-semibold">
               {view === "garage" ? "Garage & parkering" : "Uthyrningsläge"}
