@@ -1,3 +1,6 @@
+import { MaintenancePartners } from "@/components/management/MaintenancePartners";
+import { RentalUnitRegistry } from "@/components/RentalUnitRegistry";
+import { PortfolioOverview } from "@/components/PortfolioOverview";
 import { Link } from "@tanstack/react-router";
 import { Building2, ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/brf/SiteHeader";
@@ -59,7 +62,7 @@ function PropertyCard({ property: p }: { property: Property }) {
   );
 }
 export function PortfolioPage({ view }: { view: View }) {
-  const { items, scope, summary: s } = useProperties();
+  const { items, scope, summary: s, selectedId, selectProperty } = useProperties();
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -73,7 +76,7 @@ export function PortfolioPage({ view }: { view: View }) {
             {scope} · Förvaltning, hyresintäkter och uppföljning samlade på ett ställe.
           </p>
         </div>
-        {(view === "overview" || view === "economy") && <KpiSection />}
+        {(view === "economy" || (view === "overview" && selectedId !== "all")) && <KpiSection />}
         {view === "properties" && (
           <>
             <p className="text-sm text-muted-foreground">
@@ -86,11 +89,15 @@ export function PortfolioPage({ view }: { view: View }) {
             </div>
           </>
         )}
-        {view === "overview" && (
+        {view === "overview" && selectedId === "all" && <PortfolioOverview />}
+        {view === "overview" && selectedId !== "all" && (
           <>
+            <Button variant="outline" className="rounded-xl" onClick={() => selectProperty("all")}>
+              Visa hela beståndet
+            </Button>
             <div className="grid gap-5 lg:grid-cols-5">
               <section className={`${card} lg:col-span-3`}>
-                <h2 className="text-lg font-semibold">Ditt fastighetsbestånd</h2>
+                <h2 className="text-lg font-semibold">{scope}</h2>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {s.apartments + s.premises} hyresobjekt · {s.garages} garageplatser
                 </p>
@@ -100,7 +107,7 @@ export function PortfolioPage({ view }: { view: View }) {
                 </p>
                 <Button asChild variant="outline" className="rounded-xl">
                   <Link to="/fastigheten">
-                    Visa fastigheter <ArrowRight aria-hidden="true" />
+                    Byt fastighet <ArrowRight aria-hidden="true" />
                   </Link>
                 </Button>
               </section>
@@ -170,8 +177,23 @@ export function PortfolioPage({ view }: { view: View }) {
             </div>
           </section>
         )}
-        {view === "maintenance" && <Maintenance items={items} />}
-        {(view === "tenancies" || view === "garage") && (
+        {view === "maintenance" && (
+          <>
+            <Maintenance items={items} />
+            <MaintenancePartners
+              mode="owner"
+              properties={properties}
+              actions={items.map((p) => ({
+                id: `property-${p.id}`,
+                propertyId: p.id,
+                title: p.action,
+                due: p.due,
+              }))}
+            />
+          </>
+        )}
+        {view === "tenancies" && <RentalUnitRegistry key={selectedId} />}
+        {view === "garage" && (
           <section className={card}>
             <h2 className="text-lg font-semibold">
               {view === "garage" ? "Garage & parkering" : "Uthyrningsläge"}
