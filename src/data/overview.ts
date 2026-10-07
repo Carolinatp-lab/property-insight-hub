@@ -67,7 +67,7 @@ export const navigation: {
   id: string;
   label: string;
   active: boolean;
-  path?: "/" | "/ekonomi" | "/fastigheten" | "/underhall" | "/styrelsemote";
+  path?: "/" | "/ekonomi" | "/fastigheten" | "/underhall" | "/styrelsemote" | "/avtal";
 }[] = [
   { id: "oversikt", label: "Översikt", active: true, path: "/" },
   { id: "ekonomi", label: "Ekonomi", active: false, path: "/ekonomi" },
@@ -76,6 +76,7 @@ export const navigation: {
   { id: "underhall", label: "Underhåll", active: false, path: "/underhall" },
   { id: "objekt", label: "Uthyrning", active: false },
   { id: "styrelsemote", label: "Uppföljning", active: false, path: "/styrelsemote" },
+  { id: "avtal", label: "Avtal & leverantörer", active: false, path: "/avtal" },
 ];
 
 export const kpis: Kpi[] = [

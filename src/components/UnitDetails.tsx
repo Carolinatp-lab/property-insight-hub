@@ -23,6 +23,9 @@ import {
   type UnitRecord,
   type UnitPhoto,
 } from "@/data/rental-units";
+import { SupplierPicker } from "@/components/management/SupplierPicker";
+import { properties } from "@/data/portfolio";
+import type { PartnerSnapshot } from "@/data/management";
 import { money } from "@/data/portfolio";
 const box = "rounded-2xl border border-border bg-card p-4 sm:p-5";
 const select =
@@ -48,6 +51,7 @@ export function UnitDetails({
   const { record, save, saving, error, notice } = useUnitRecord(unit);
   const [eventForm, setEventForm] = useState(false);
   const [taskForm, setTaskForm] = useState(false);
+  const [supplier, setSupplier] = useState<PartnerSnapshot | null>(null);
   const [category, setCategory] = useState<UnitEvent["category"]>("Utbyte");
   const [equipmentId, setEquipmentId] = useState("");
   const [photoError, setPhotoError] = useState("");
@@ -99,10 +103,12 @@ export function UnitDetails({
       due: String(data.get("due")),
       budget: Number(data.get("budget")),
       completed: false,
+      ...(supplier ? { supplier } : {}),
     };
     if (await save({ ...record, tasks: [...record.tasks, task] })) {
       form.reset();
       setTaskForm(false);
+      setSupplier(null);
     }
   }
   async function addPhotos(event: FormEvent<HTMLFormElement>) {
@@ -374,6 +380,11 @@ export function UnitDetails({
                         {item.equipmentName} · {item.model}
                       </p>
                     )}
+                    {item.supplier && (
+                      <p className="mt-2 text-sm">
+                        Utfört av: {item.supplier.name} · {item.supplier.trade}
+                      </p>
+                    )}
                     {item.cost !== null && (
                       <p className="mt-3 text-sm font-medium">{money(item.cost)}</p>
                     )}
@@ -435,6 +446,14 @@ export function UnitDetails({
                       />
                     </div>
                   </div>
+                  <SupplierPicker
+                    mode="owner"
+                    properties={properties}
+                    propertyId={unit.propertyId}
+                    value={supplier}
+                    onChange={setSupplier}
+                    id="task-supplier"
+                  />
                   <Button type="submit" className="rounded-xl">
                     {saving ? "Sparar…" : "Spara åtgärd"}
                   </Button>
@@ -455,6 +474,11 @@ export function UnitDetails({
                         <p className="mt-1 text-sm text-muted-foreground">
                           {task.due} · Budget {money(task.budget)}
                         </p>
+                        {task.supplier && (
+                          <p className="mt-2 text-sm">
+                            Leverantör: {task.supplier.name} · {task.supplier.trade}
+                          </p>
+                        )}
                         <p className="mt-2 text-xs font-medium">
                           {task.completed
                             ? "Utförd"
@@ -487,6 +511,7 @@ export function UnitDetails({
                                     equipmentName: "",
                                     model: "",
                                     cost: null,
+                                    ...(task.supplier ? { supplier: task.supplier } : {}),
                                   },
                                 ),
                               )

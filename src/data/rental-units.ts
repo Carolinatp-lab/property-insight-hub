@@ -1,3 +1,4 @@
+import type { PartnerSnapshot } from "./management";
 import type { Property } from "./portfolio";
 
 export type RentalUnit = {
@@ -21,6 +22,7 @@ export type UnitEvent = {
   equipmentName: string;
   model: string;
   cost: number | null;
+  supplier?: PartnerSnapshot;
 };
 export type UnitTask = {
   id: string;
@@ -28,6 +30,7 @@ export type UnitTask = {
   due: string;
   budget: number;
   completed: boolean;
+  supplier?: PartnerSnapshot;
 };
 export type UnitPhoto = {
   id: string;

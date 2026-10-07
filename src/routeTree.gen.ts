@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AvtalRouteImport } from './routes/avtal'
 import { Route as EkonomiRouteImport } from './routes/ekonomi'
 import { Route as FastighetenRouteImport } from './routes/fastigheten'
 import { Route as GarageRouteImport } from './routes/garage'
@@ -21,6 +22,11 @@ import { Route as EkonomiInvesteringssimulatorRouteImport } from './routes/ekono
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AvtalRoute = AvtalRouteImport.update({
+  id: '/avtal',
+  path: '/avtal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EkonomiRoute = EkonomiRouteImport.update({
@@ -62,6 +68,7 @@ const EkonomiInvesteringssimulatorRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/avtal': typeof AvtalRoute
   '/ekonomi': typeof EkonomiRouteWithChildren
   '/fastigheten': typeof FastighetenRoute
   '/garage': typeof GarageRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/avtal': typeof AvtalRoute
   '/ekonomi': typeof EkonomiRouteWithChildren
   '/fastigheten': typeof FastighetenRoute
   '/garage': typeof GarageRoute
@@ -83,6 +91,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/avtal': typeof AvtalRoute
   '/ekonomi': typeof EkonomiRouteWithChildren
   '/fastigheten': typeof FastighetenRoute
   '/garage': typeof GarageRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/avtal'
     | '/ekonomi'
     | '/fastigheten'
     | '/garage'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/avtal'
     | '/ekonomi'
     | '/fastigheten'
     | '/garage'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/avtal'
     | '/ekonomi'
     | '/fastigheten'
     | '/garage'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvtalRoute: typeof AvtalRoute
   EkonomiRoute: typeof EkonomiRouteWithChildren
   FastighetenRoute: typeof FastighetenRoute
   GarageRoute: typeof GarageRoute
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/avtal': {
+      id: '/avtal'
+      path: '/avtal'
+      fullPath: '/avtal'
+      preLoaderRoute: typeof AvtalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ekonomi': {
@@ -208,6 +228,7 @@ const EkonomiRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvtalRoute: AvtalRoute,
   EkonomiRoute: EkonomiRouteWithChildren,
   FastighetenRoute: FastighetenRoute,
   GarageRoute: GarageRoute,

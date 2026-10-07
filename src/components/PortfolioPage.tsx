@@ -1,3 +1,4 @@
+import { MaintenancePartners } from "@/components/management/MaintenancePartners";
 import { RentalUnitRegistry } from "@/components/RentalUnitRegistry";
 import { PortfolioOverview } from "@/components/PortfolioOverview";
 import { Link } from "@tanstack/react-router";
@@ -176,7 +177,21 @@ export function PortfolioPage({ view }: { view: View }) {
             </div>
           </section>
         )}
-        {view === "maintenance" && <Maintenance items={items} />}
+        {view === "maintenance" && (
+          <>
+            <Maintenance items={items} />
+            <MaintenancePartners
+              mode="owner"
+              properties={properties}
+              actions={items.map((p) => ({
+                id: `property-${p.id}`,
+                propertyId: p.id,
+                title: p.action,
+                due: p.due,
+              }))}
+            />
+          </>
+        )}
         {view === "tenancies" && <RentalUnitRegistry key={selectedId} />}
         {view === "garage" && (
           <section className={card}>
