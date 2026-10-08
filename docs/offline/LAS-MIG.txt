@@ -1,0 +1,56 @@
+﻿FASTIGHETSDEMO - OFFLINEKOPIA, 8 OKTOBER 2026
+
+1. Ladda ned ZIP-filen och spara den på datorn medan du har internet.
+2. Högerklicka på ZIP-filen i Utforskaren och välj "Extrahera alla".
+3. Öppna den uppackade mappen och dubbelklicka STARTA-DEMON.cmd.
+4. Webbläsaren öppnar en meny. Välj Fastighetsägare eller BRF.
+5. Låt det svarta startfönstret vara öppet under visningen.
+   Stäng fönstret när du är klar.
+
+INGEN WIFI ELLER INSTALLATION BEHÖVS EFTER NEDLADDNING
+Paketet innehåller en portabel Node-runtime för Windows 10/11 x64,
+byggda webbappar och lokalt typsnitt. Git Bash och npm behövs inte.
+Din gamla projektmapp ändras inte. Du behöver inte merga något.
+Startfilens Windows-specifika öppning av webbläsaren har granskats,
+men den kan inte köras i vår Linux-testmiljö. Om webbläsaren inte
+öppnas automatiskt: öppna http://127.0.0.1:8092 själv.
+
+SE RESULTATET DIREKT UTAN ATT STARTA APPEN
+Dubbelklicka TITTA-PA-RESULTATET.html. Där finns skärmbilder från
+båda modulerna som kan visas utan server, även på andra datorer.
+Det är en bildvisning; STARTA-DEMON.cmd öppnar den klickbara appen.
+
+OM STARTEN INTE FUNGERAR
+- Packa upp hela ZIP-filen. Starta inte filen inuti ZIP-visningen.
+- Om en tidigare offlinekopia är igång, stäng dess startfönster först.
+- Portarna 8092, 8093 och 8094 används för demot, så den gamla
+  utvecklingsappen på 8083 kan ligga kvar.
+- En företagsdator kan ha policy som blockerar .cmd eller medföljande
+  .exe-filer. Följ då organisationens regler och visa bildvisningen.
+
+VAD INGÅR?
+Senaste mergade huvudversionen av fastighetsägar- och BRF-projekten,
+med avtalsmallar, prioriterade leverantörer och underhållshistorik.
+Fastighetsägarversionen innehåller också sammanlagd beståndsöversikt,
+alla lägenheter/lokaler samt utrustning, logg, mini-underhåll och bilder.
+Offlinedemot är byggt som en statisk SPA. Typsnittet är paketerat lokalt.
+Ursprunglig källkod finns som ZIP-filer i KALLKOD. Commit-ID finns i
+VERSION.json. Det här paketet uppdaterar inte sig självt.
+
+EXEMPELDATA OCH EGNA ÄNDRINGAR
+Demot innehåller exempeldata. Egna journaler, mallar, leverantörer och
+bilder sparas i samma webbläsarprofil och adress. De delas inte mellan
+datorer och ingår inte när du kopierar ZIP-paketet. Offlinekopians portar
+skiljer sig från din tidigare app, så tidigare lokalt sparad data visas
+inte automatiskt här. Rensa inte webbplatslagringen om du vill behålla
+egna uppgifter. Objektsjournaler kan exporteras från appen.
+
+TESTAT
+Båda produktionsbyggena är verifierade. Chromium-tester med alla
+icke-lokala nätverksanrop blockerade verifierar malluppladdning och
+nedladdning, leverantörsregister/filter/redigering, uppdragshistorik,
+sparning efter omladdning, felhantering vid lagringsfel och mobilvyer.
+Fastighetsägarens objektsjournal behåller utföraren efter avslutat jobb.
+Node-runtime har kontrollerats mot leverantörens SHA-256-kontrollsumma.
+Licenser för Node och typsnitt medföljer. Allt körs bara på datorns
+loopback-adress; ingen internetserver krävs.
